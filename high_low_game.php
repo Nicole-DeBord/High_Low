@@ -1,18 +1,23 @@
 <?php
 
 $num = rand(1, 100);
-$quip = ['Not quite!', 'Try not to hurt yourself...', 'Are you even paying attention!?', 'Come onnnn... think!'];
+
+$quip = ['Nice try.', 'Not quite.', 'Try not to hurt yourself...', 
+'Most amusing.', 'Are you even paying attention?',
+ 'Come onnnn... think.', 'Congrats, you win - PSYCH.', 
+ 'Maybe you\'re not cut out for this.', 
+ 'Wrong, but your dedication is impressive.'];
 
 do {
 
 fwrite(STDOUT, 'What number am I thinking of? ') . PHP_EOL;
 
-$guess = fgets(STDIN);
+$guess = trim(fgets(STDIN));
 
-$index = rand(0, 3);
+$index = rand(0, 8);
  	
 	if ($guess > $num) {
-		
+
 		echo "{$quip[$index]} LOWER!" . PHP_EOL;
 	} 
 		
