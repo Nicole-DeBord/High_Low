@@ -1,32 +1,63 @@
 <?php
 
-// Create a file named for.php in your exercises repo. 
+// exercise 3.3.1. #1 - this mostly does what it's supposed to, still needs
+// an error message, but it functions - see comments below
 
-//Commit and push all changes after each step.
+$start = null;
+$end = null;
+$inc = null;
 
-// Prompt user for a starting number and ending number, then 
-// display all the numbers from the starting to ending using a 
-// for loop.
+// var_dump(is_numeric($start));
 
-fwrite(STDOUT, 'Enter a starting number ');
-$start = trim(fgets(STDIN));
+do {
 
-fwrite(STDOUT, 'Enter an ending number ');
-$end = trim(fgets(STDIN));
+	if (!is_numeric($start)) {
+		// Ask user for input to set variables
+		fwrite(STDOUT, 'Enter a starting number ');	
+		$start = trim(fgets(STDIN));	
+	}
 
-// Refactor to allow user to choose increment. 
-// (count by 1, 2, 10, ...)
+	// else {
+	// 	echo "Please enter a numeric value.\n";
+	// }
 
-fwrite(STDOUT, 'Enter an incrementation value ');
-$inc = trim(fgets(STDIN));
+	if (!is_numeric($end)) {
+		fwrite(STDOUT, 'Enter an ending number ') . PHP_EOL;
+		$end = trim(fgets(STDIN));
+	}
 
-for ($i=$start; $i <= $end; $i += $inc) { 
+	if (!is_numeric($inc)) {
+		fwrite(STDOUT, 'Enter an incrementation value ');
+		$inc = trim(fgets(STDIN));
+
+		// Check for an incrementer
+		if ($inc == '') {
+			$inc = 1;
+		}
+	}
+
+} while (!is_numeric($start) || !is_numeric($end) || !is_numeric($inc));
+
+
+
+// var_dump($inc);
+
+
+
+// Check to see if those variables are numeric
+if (is_numeric($start) && is_numeric($end) && is_numeric($inc)) {
 	
-	echo $i . PHP_EOL;
+	// Output our numbers using the variables set above.	
+	for ($i=$start; $i <= $end; $i += $inc) { 
+		echo $i . PHP_EOL;
+	}
+
 }
-// Default increment to 1 if no input.
-// Make sure you are only allowing users to pass in numbers. 
-// Give an error message is both passed arguments are not numeric. 
-// See php.net/is_numeric.
+
+// else {
+
+// 	echo "Please enter numeric values.\n";
+
+// }
 
 ?>
