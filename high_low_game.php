@@ -1,6 +1,6 @@
 <?php
 
-// exercise 3.2.1.
+// exercises 3.2.1. and 3.2.2.
 
 $num = mt_rand($argv[1], $argv[2]);
 
